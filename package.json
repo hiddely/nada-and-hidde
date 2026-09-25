@@ -7,16 +7,19 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "serve . --listen 3000",
+    "dev": "concurrently --kill-others \"sass --watch styles.scss:styles.css --no-source-map\" \"serve . --listen 3000\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "node scripts/build.mjs",
-    "preview": "serve dist --listen 3000"
+    "preview": "serve dist --listen 3000",
+    "styles": "sass styles.scss styles.css --no-source-map",
+    "predev": "npm run styles"
   },
   "devDependencies": {
-    "clean-css": "^5.3.3",
+    "concurrently": "^10.0.5",
     "html-minifier-terser": "^7.2.0",
     "prettier": "^3.9.9",
+    "sass": "^1.105.0",
     "serve": "^14.2.6",
     "sharp": "^0.35.4"
   }

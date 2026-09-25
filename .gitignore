@@ -2,3 +2,7 @@
 node_modules/
 dist/
 .idea/
+
+# Generated from styles.scss for local development
+/styles.css
+/styles.css.map

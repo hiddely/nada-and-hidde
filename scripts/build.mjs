@@ -10,7 +10,7 @@ import {
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { minify } from "html-minifier-terser";
-import CleanCSS from "clean-css";
+import { compile } from "sass";
 import sharp from "sharp";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
@@ -48,19 +48,29 @@ for (const page of pages) {
   await writeFile(path.join(output, page), html);
 }
 
-const css = await readFile(path.join(root, "styles.css"), "utf8");
-const result = new CleanCSS({ level: 1 }).minify(css);
-if (result.errors.length) throw new Error(result.errors.join("\n"));
-await writeFile(path.join(output, "styles.css"), result.styles);
+// Compile SCSS directly; production never relies on local generated CSS.
+const { css } = compile(path.join(root, "styles.scss"), {
+  style: "compressed",
+  sourceMap: false,
+  charset: false,
+});
+await writeFile(path.join(output, "styles.css"), css);
 
-const files = [...pages, "styles.css", illustration];
+const files = [...pages, "styles.scss", illustration];
 let before = 0;
 let after = 0;
 for (const file of files) {
   before += (await stat(path.join(root, file))).size;
   after += (
     await stat(
-      path.join(output, file === illustration ? optimizedIllustration : file),
+      path.join(
+        output,
+        file === illustration
+          ? optimizedIllustration
+          : file === "styles.scss"
+            ? "styles.css"
+            : file,
+      ),
     )
   ).size;
 }
