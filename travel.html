@@ -10,7 +10,21 @@
     <meta name="theme-color" content="#f3e7ae" />
     <title>Travel & Stay · Nada &amp; Hidde</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script defer src="assets/cairo-nile.js"></script>
+    <script defer src="assets/cairo-map.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -23,33 +37,19 @@
       </nav>
     </header>
     <main id="main">
-      <section class="page-intro">
-        <h1>Make your way to Cairo.</h1>
-        <p class="lede">
-          A few practical details to help you settle in, so you can spend more
-          time enjoying the celebration.
-        </p>
-      </section>
       <section class="section-width travel-basics">
         <article>
           <h2>Getting here</h2>
           <p>
-            Fly into Cairo International Airport (CAI) or Sphinx International
-            Airport (SPX). Compare flights to both when planning your trip, and
-            check the journey to your chosen accommodation before booking.
+            We recommend flying into Cairo International Airport (CAI). If you
+            are planning a longer trip, many holiday airlines offer low-cost
+            flights to Cairo, as well as other cities in Egypt such as Hurghada
+            (HRG) or Luxor (LXR).
           </p>
         </article>
         <article>
           <h2>Getting around</h2>
-          <p>
-            We recommend Uber as the most reliable way to get around Cairo.
-            Download the app before you arrive, and leave a little extra time
-            for journeys through the city.
-          </p>
-          <p>
-            Exact venue directions and parking details will follow closer to the
-            wedding.
-          </p>
+          <p>Uber is the most reliable way to get around Cairo.</p>
         </article>
       </section>
       <section class="section-width stays">
@@ -58,8 +58,606 @@
           A few places to start your search, grouped by neighbourhood. Choose
           whatever feels most like you.
         </p>
+        <figure class="cairo-map">
+          <div class="cairo-map-heading">
+            <span>A little lay of the land</span>
+            <span aria-hidden="true">القاهرة</span>
+          </div>
+          <svg
+            class="cairo-map-drawing"
+            viewBox="0 0 640 660"
+            role="img"
+            aria-labelledby="cairo-map-title cairo-map-description"
+          >
+            <title id="cairo-map-title">Our little map of Cairo</title>
+            <desc id="cairo-map-description">
+              An illustrated map with north at the top. Zamalek is on the Nile,
+              west of Downtown. Heliopolis is to the northeast. Dahab Island
+              Palace is on the river to the south, near Maadi. Choose a
+              neighbourhood to see places to stay, or the palace for wedding
+              venue details. Locations are approximate.
+            </desc>
+            <defs>
+              <pattern
+                id="map-paper"
+                width="9"
+                height="9"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="2" cy="5" r="0.6" fill="#8b8c5e" opacity="0.15" />
+              </pattern>
+              <g
+                id="map-palm"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M0 30 Q4 13 0 0 M0 0 Q-12 -13 -20 -3 M0 0 Q-16 -3 -18 8 M0 0 Q-4 -17 2 -19 M0 0 Q13 -16 21 -7 M0 0 Q16 -4 19 7 M0 0 Q7 -7 10 12"
+                />
+              </g>
+              <g id="map-star" fill="currentColor">
+                <path
+                  d="m0 -12 3 8 9 -2 -6 7 5 8 -9 -3 -5 7 -1 -10 -9 -2 9 -4Z"
+                />
+              </g>
+            </defs>
+            <rect width="640" height="660" fill="url(#map-paper)" />
+            <!-- A deliberately loose river silhouette; this is an illustrated guide. -->
+            <path
+              class="map-river"
+              d="M228 -10 C185 79 260 155 236 230 S219 326 253 388 S309 489 294 553 S295 626 324 675 L403 675 C370 604 354 595 371 537 S349 427 317 373 S297 284 307 221 S286 104 299 -10Z"
+            />
+            <g class="map-water-lines">
+              <path
+                d="M251 14 Q234 50 244 76 M281 126 Q302 179 280 225 M251 278 Q240 316 263 349 M306 398 Q338 442 337 477 M321 548 Q309 588 335 624"
+              />
+              <path
+                d="M265 24 Q253 51 261 70 M267 284 Q258 312 276 338 M321 405 Q346 443 350 467 M334 558 Q329 587 346 614"
+              />
+            </g>
+            <g class="map-streets">
+              <path
+                d="M327 246 Q392 204 488 140 M351 263 Q422 225 510 159 M354 225 L405 296 M394 196 L448 269 M437 166 L487 227 M334 317 Q441 296 564 341 M348 346 Q456 325 558 366 M406 312 L389 375 M461 313 L455 378 M511 327 L513 391 M394 444 Q465 413 548 446 M410 468 Q486 445 559 473"
+              />
+              <path
+                d="M58 276 Q127 255 198 272 M66 300 Q136 278 201 299 M98 252 L107 330 M150 255 L165 326"
+              />
+            </g>
+            <path
+              class="map-island"
+              d="M254 118 C225 137 239 197 251 224 C270 210 278 173 267 139Z"
+            />
+            <path
+              class="map-island"
+              d="M282 345 Q263 367 287 405 Q309 383 282 345Z"
+            />
+            <path
+              class="map-island map-island-gold"
+              d="M321 458 C290 480 308 537 335 572 C354 543 350 492 321 458Z"
+            />
+            <g class="map-bridge">
+              <path
+                d="M218 226 L302 241 M219 232 L301 247 M277 433 L350 414 M279 439 L352 420"
+              />
+            </g>
+            <g class="map-compass" transform="translate(71 65)">
+              <text x="0" y="-24" text-anchor="middle">N</text>
+              <path d="M0 -12 L7 15 L0 10 L-7 15Z" fill="currentColor" />
+              <path
+                d="M0 10 V34 M-15 10 H15"
+                fill="none"
+                stroke="currentColor"
+              />
+            </g>
+            <g class="map-ornaments" aria-hidden="true">
+              <use
+                href="#map-palm"
+                x="113"
+                y="397"
+                transform="rotate(-9 113 397)"
+              />
+              <use
+                href="#map-palm"
+                x="147"
+                y="411"
+                transform="scale(.8) translate(37 100)"
+              />
+              <use href="#map-palm" x="534" y="581" />
+              <use href="#map-star" x="560" y="52" />
+              <path
+                d="M192 352 V391 L215 387Z M188 359 L175 387 H188 M173 394 Q194 404 216 391"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <text
+                class="map-river-label"
+                x="240"
+                y="422"
+                transform="rotate(65 240 422)"
+              >
+                the Nile
+              </text>
+              <text class="map-background-label" x="75" y="348">GIZA</text>
+            </g>
+            <a
+              href="#stay-heliopolis"
+              class="map-place"
+              aria-label="Heliopolis: see places to stay"
+            >
+              <path
+                class="map-region"
+                d="M415 80 Q476 57 551 87 L576 161 Q502 201 425 162Z"
+              />
+              <circle class="map-dot" cx="473" cy="107" r="5" />
+              <text class="map-place-name" x="492" y="138" text-anchor="middle">
+                Heliopolis
+              </text>
+              <text class="map-place-note" x="492" y="161" text-anchor="middle">
+                Hilton · Lemon Spaces
+              </text>
+            </a>
+            <a
+              href="#stay-zamalek"
+              class="map-place"
+              aria-label="Zamalek: see places to stay"
+            >
+              <path class="map-leader" d="M239 175 Q207 154 186 161" />
+              <circle class="map-dot" cx="252" cy="177" r="5" />
+              <text class="map-place-name" x="48" y="160">Zamalek</text>
+              <text class="map-place-note" x="48" y="185">
+                Marriott · Lemon Spaces
+              </text>
+              <rect
+                class="map-hit-area"
+                x="38"
+                y="126"
+                width="240"
+                height="77"
+              />
+            </a>
+            <a
+              href="#stay-downtown"
+              class="map-place"
+              aria-label="Downtown: see places to stay"
+            >
+              <path
+                class="map-region"
+                d="M328 243 Q371 220 421 248 L430 287 Q368 310 327 281Z"
+              />
+              <circle class="map-dot" cx="325" cy="270" r="5" />
+              <text class="map-place-name" x="349" y="270">Downtown</text>
+              <text class="map-place-note" x="349" y="295">
+                The Nile Ritz-Carlton
+              </text>
+            </a>
+            <a
+              href="#stay-maadi"
+              class="map-place"
+              aria-label="Maadi: see places to stay"
+            >
+              <path
+                class="map-region"
+                d="M400 495 Q465 471 533 502 L548 548 Q488 586 413 556Z"
+              />
+              <circle class="map-dot" cx="413" cy="517" r="5" />
+              <text class="map-place-name" x="437" y="524">Maadi</text>
+              <text class="map-place-note" x="437" y="549">Lemon Spaces</text>
+            </a>
+            <a
+              href="faqs.html"
+              class="map-palace"
+              aria-label="Dahab Island Palace: wedding venue details"
+            >
+              <path class="map-leader" d="M288 511 Q262 527 249 549 H221" />
+              <g transform="translate(302 470)" class="map-palace-icon">
+                <path
+                  d="M0 35 V3 H7 V9 H14 V3 H21 V15 H28 V3 H35 V9 H42 V3 H49 V35Z"
+                />
+                <path d="M18 35 V25 Q24 13 31 25 V35 M7 17 V23 M40 17 V23" />
+              </g>
+              <use href="#map-star" x="326" y="450" />
+              <text class="map-palace-kicker" x="59" y="518">
+                WE’RE GETTING MARRIED!
+              </text>
+              <text class="map-place-name" x="59" y="548">Dahab Island</text>
+              <text class="map-place-name" x="59" y="576">Palace</text>
+              <rect
+                class="map-hit-area"
+                x="47"
+                y="489"
+                width="310"
+                height="102"
+              />
+            </a>
+            <text class="map-signoff" x="320" y="638" text-anchor="middle">
+              a city, a river, a celebration
+            </text>
+          </svg>
+          <figcaption>
+            A hand-drawn guide, not to scale. Select a neighbourhood for places
+            to stay, or the palace for venue details.
+          </figcaption>
+        </figure>
+        <figure class="cairo-reference-map" aria-labelledby="reference-heading">
+          <div class="reference-map-heading">
+            <h3 id="reference-heading">Cairo</h3>
+            <span lang="ar" dir="rtl">القاهرة</span>
+          </div>
+          <div
+            class="reference-map-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Cairo orientation map; scroll horizontally on smaller screens"
+          >
+            <svg
+              class="reference-map-drawing"
+              viewBox="0 0 800 720"
+              role="img"
+              aria-labelledby="reference-title reference-description"
+            >
+              <title id="reference-title">
+                Cairo neighbourhoods and landmarks
+              </title>
+              <desc id="reference-description">
+                North is up. The Nile separates Giza to the west from central
+                Cairo to the east. Zamalek is on Gezira Island, beside Downtown
+                and Tahrir Square. Heliopolis and Cairo airport are northeast.
+                Dahab Island Palace is south of central Cairo on the Nile, near
+                Maadi. Major roads and bridges are schematic. Select a
+                neighbourhood to see accommodation. Background drawings mark the
+                Giza pyramids, Grand Egyptian Museum, Citadel and National
+                Museum of Egyptian Civilization; the museums and Citadel link to
+                their official websites.
+              </desc>
+              <defs>
+                <pattern
+                  id="reference-grid"
+                  width="40"
+                  height="40"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M40 0H0V40"
+                    fill="none"
+                    stroke="#dedecf"
+                    stroke-width="0.7"
+                  />
+                </pattern>
+              </defs>
+              <path
+                id="reference-corniche-label"
+                d="M345 399 Q349 439 369 479 Q397 545 405 621"
+                fill="none"
+              />
+              <rect width="800" height="720" fill="#f7f5e9" />
+              <rect width="800" height="720" fill="url(#reference-grid)" />
+              <!-- Simplified orientation map, not surveyed roads or district boundaries. -->
+              <g class="reference-districts">
+                <path d="M445 80 L568 60 L646 143 L589 202 L463 164Z" />
+                <path d="M315 255 L399 233 L434 306 L391 345 L316 317Z" />
+                <path d="M378 541 L515 518 L566 633 L435 675 L378 620Z" />
+              </g>
+              <path
+                class="reference-river"
+                d="M231 -10 C207 83 213 136 244 202 S275 290 256 346 S253 426 278 469 S309 543 304 588 S317 681 335 730 L403 730 C378 661 364 626 369 588 S363 510 341 460 S317 395 326 344 S343 262 316 199 S290 71 299 -10Z"
+              />
+              <path
+                class="reference-land"
+                d="M276 172 C267 199 277 264 296 288 C310 263 296 204 276 172Z"
+              />
+              <path
+                class="reference-land"
+                d="M289 357 Q272 392 301 430 Q313 392 289 357Z"
+              />
+              <path
+                class="reference-land reference-dahab"
+                d="M325 514 Q299 559 344 614 Q354 562 325 514Z"
+              />
+              <g class="reference-road-casing">
+                <path d="M23 283 L233 275 L287 280 L365 254 Q423 218 474 188" />
+                <path d="M26 502 L288 505 Q360 513 414 498 L776 478" />
+                <path d="M428 443 Q473 338 459 272 T523 157 L657 84" />
+                <path d="M321 310 Q337 345 328 392 T353 475 Q380 561 389 661" />
+              </g>
+              <g class="reference-roads">
+                <path d="M23 283 L233 275 L287 280 L365 254 Q423 218 474 188" />
+                <path d="M26 502 L288 505 Q360 513 414 498 L776 478" />
+                <path d="M428 443 Q473 338 459 272 T523 157 L657 84" />
+                <path d="M321 310 Q337 345 328 392 T353 475 Q380 561 389 661" />
+              </g>
+              <path class="reference-bridge" d="M283 310 L331 319" />
+              <g class="reference-road-labels">
+                <text x="53" y="267">6th October Bridge</text>
+                <text x="53" y="484">Ring Road / El Mounib Bridge</text>
+                <text x="575" y="467">Ring Road</text>
+                <text x="475" y="330" transform="rotate(-78 475 330)">
+                  Salah Salem Road
+                </text>
+                <text>
+                  <textPath href="#reference-corniche-label" startOffset="15%">
+                    Nile Corniche
+                  </textPath>
+                </text>
+                <path d="M185 339 L277 313" />
+                <text x="48" y="357">Qasr El Nil Bridge</text>
+              </g>
+              <g class="reference-context">
+                <text x="101" y="413">GIZA</text>
+                <text x="538" y="266">NASR CITY</text>
+                <text x="487" y="405">OLD CAIRO</text>
+                <text x="291" y="664" transform="rotate(-90 291 664)">
+                  RIVER NILE
+                </text>
+                <text x="194" y="402" transform="rotate(-90 194 402)">
+                  WEST BANK
+                </text>
+              </g>
+              <g class="reference-sights">
+                <a
+                  class="reference-sight"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Pyramids+of+Giza"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Pyramids of Giza: open in Google Maps (new tab)"
+                  transform="translate(65 627)"
+                >
+                  <title>Pyramids of Giza — open in Google Maps</title>
+                  <rect
+                    class="reference-sight-hit"
+                    x="-12"
+                    y="-28"
+                    width="144"
+                    height="73"
+                  />
+                  <g class="reference-sight-art">
+                    <path
+                      d="M0 21 L23 -12 L48 21 M23 -12 L29 21 M40 21 L72 -25 L105 21 M72 -25 L80 21 M96 21 L111 0 L127 21 M111 0 L115 21 M-5 25 Q61 22 133 25"
+                    />
+                  </g>
+                  <text x="61" y="46" text-anchor="middle">
+                    Pyramids of Giza ↗
+                  </text>
+                </a>
+                <a
+                  class="reference-sight"
+                  href="https://tickets.gem.eg/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Grand Egyptian Museum: official website (opens in a new tab)"
+                  transform="translate(86 549)"
+                >
+                  <title>
+                    Grand Egyptian Museum (GEM) — visit the official website
+                  </title>
+                  <rect
+                    class="reference-sight-hit"
+                    x="-22"
+                    y="-17"
+                    width="104"
+                    height="61"
+                  />
+                  <g class="reference-sight-art">
+                    <path
+                      d="M0 0 L27 -13 L54 0Z M5 5 H49 M8 5 V23 M20 5 V23 M34 5 V23 M46 5 V23 M3 24 H51 M0 29 H54"
+                    />
+                  </g>
+                  <text x="27" y="47" text-anchor="middle">GEM ↗</text>
+                </a>
+                <a
+                  class="reference-sight"
+                  href="https://egymonuments.gov.eg/archaeological-sites/cairo-citadel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Cairo Citadel: official website (opens in a new tab)"
+                  transform="translate(505 349)"
+                >
+                  <title>Cairo Citadel — visit the official website</title>
+                  <rect
+                    class="reference-sight-hit"
+                    x="-13"
+                    y="-26"
+                    width="100"
+                    height="80"
+                  />
+                  <g class="reference-sight-art">
+                    <path
+                      d="M0 28 H76 M9 27 V-5 L13 -19 L17 -5 V27 M59 27 V-5 L63 -19 L67 -5 V27 M22 27 V6 H54 V27 M22 6 Q22 -16 38 -16 Q54 -16 54 6 M38 -16 V-22 M33 27 V17 Q38 9 43 17 V27 M-4 33 Q38 30 80 33"
+                    />
+                  </g>
+                  <text x="38" y="53" text-anchor="middle">Citadel ↗</text>
+                </a>
+                <a
+                  class="reference-sight"
+                  href="https://nmec.gov.eg/mummies-gallery/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="National Museum of Egyptian Civilization: Royal Mummies Gallery (opens in a new tab)"
+                  transform="translate(440 427)"
+                >
+                  <title>
+                    National Museum of Egyptian Civilization — Royal Mummies
+                    Gallery
+                  </title>
+                  <rect
+                    class="reference-sight-hit"
+                    x="-9"
+                    y="-17"
+                    width="187"
+                    height="55"
+                  />
+                  <g class="reference-sight-art">
+                    <path
+                      d="M15 -13 C5 -13 4 -3 7 3 C-1 12 3 32 15 35 C27 32 31 12 23 3 C26 -3 25 -13 15 -13Z M7 -3 H23 M7 4 L25 13 M5 12 L24 22 M8 24 L20 30 M23 4 L5 16 M26 15 L9 26 M11 -5 H12 M18 -5 H19"
+                    />
+                  </g>
+                  <text x="43" y="5">Mummy museum ↗</text>
+                  <text x="43" y="26">NMEC</text>
+                </a>
+              </g>
+              <g class="reference-landmarks">
+                <circle cx="336" cy="319" r="5" />
+                <text x="350" y="326">Tahrir Square</text>
+                <path d="M664 74 l8 -18 8 18 -8 -5Z" />
+                <text x="593" y="38">Cairo airport</text>
+                <text x="688" y="72">CAI</text>
+                <path class="reference-connector" d="M289 391 H313" />
+                <text x="335" y="380">Roda Island</text>
+              </g>
+              <a
+                href="#stay-zamalek"
+                class="reference-place"
+                aria-label="Zamalek accommodation"
+              >
+                <path class="reference-connector" d="M218 214 H282" />
+                <circle cx="285" cy="214" r="7" />
+                <text x="85" y="211">Zamalek</text>
+                <text class="reference-detail" x="85" y="234">
+                  Gezira Island
+                </text>
+                <rect x="75" y="183" width="212" height="62" />
+              </a>
+              <a
+                href="#stay-downtown"
+                class="reference-place"
+                aria-label="Downtown accommodation"
+              >
+                <circle cx="348" cy="284" r="7" />
+                <text x="364" y="291">Downtown</text>
+                <rect x="335" y="264" width="153" height="40" />
+              </a>
+              <a
+                href="#stay-heliopolis"
+                class="reference-place"
+                aria-label="Heliopolis accommodation"
+              >
+                <circle cx="527" cy="131" r="7" />
+                <text x="454" y="110">Heliopolis</text>
+                <rect x="445" y="83" width="143" height="67" />
+              </a>
+              <a
+                href="#stay-maadi"
+                class="reference-place"
+                aria-label="Maadi accommodation"
+              >
+                <circle cx="419" cy="583" r="7" />
+                <text x="436" y="590">Maadi</text>
+                <rect x="404" y="562" width="110" height="43" />
+              </a>
+              <a
+                href="faqs.html"
+                class="reference-venue"
+                aria-label="Dahab Island Palace venue details"
+              >
+                <path
+                  class="reference-connector"
+                  d="M350 572 Q385 580 408 625 H422"
+                />
+                <g transform="translate(306 543)" class="map-palace-icon">
+                  <path
+                    d="M0 35 V3 H7 V9 H14 V3 H21 V15 H28 V3 H35 V9 H42 V3 H49 V35Z"
+                  />
+                  <path d="M18 35 V25 Q24 13 31 25 V35 M7 17 V23 M40 17 V23" />
+                </g>
+                <use href="#map-star" x="330" y="527" />
+                <text x="435" y="632">Dahab Island Palace</text>
+                <text class="reference-detail" x="435" y="656">
+                  Our wedding venue
+                </text>
+                <rect x="299" y="514" width="63" height="72" />
+                <rect x="425" y="608" width="222" height="56" />
+              </a>
+              <g class="reference-north" transform="translate(66 68)">
+                <text x="0" y="-22" text-anchor="middle">N</text>
+                <path d="M0 -10 L7 11 L0 6 L-7 11Z" />
+                <path
+                  d="M0 6 V36"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </g>
+              <g class="reference-legend" transform="translate(44 698)">
+                <circle cx="0" cy="-5" r="5" fill="#42482f" />
+                <text x="14" y="0">Stay areas</text>
+                <path d="M150 -5 H180" stroke="#b59465" stroke-width="4" />
+                <text x="190" y="0">Major roads</text>
+                <text x="415" y="0">North up · approximate positions</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>
+            <span class="reference-scroll-hint">Swipe the map to explore.</span>
+            A simplified orientation map; roads and neighbourhood areas are not
+            to scale.
+            <a
+              class="text-link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Cairo+Egypt"
+            >
+              Open Cairo in Google Maps ↗
+            </a>
+          </figcaption>
+        </figure>
+        <figure
+          class="cairo-reference-map cairo-basemap"
+          aria-labelledby="basemap-heading"
+        >
+          <div class="reference-map-heading">
+            <h3 id="basemap-heading">Cairo</h3>
+            <span lang="ar" dir="rtl">القاهرة</span>
+          </div>
+          <svg class="basemap-filters" aria-hidden="true" focusable="false">
+            <!-- Maps the tiles' gray land (232) to sand and white roads to paper. -->
+            <filter id="basemap-paper" color-interpolation-filters="sRGB">
+              <feColorMatrix type="saturate" values="0" />
+              <feComponentTransfer>
+                <feFuncR type="linear" slope="0.656" intercept="0.317" />
+                <feFuncG type="linear" slope="0.789" intercept="0.168" />
+                <feFuncB type="linear" slope="1.344" intercept="-0.458" />
+              </feComponentTransfer>
+            </filter>
+          </svg>
+          <div
+            id="cairo-basemap"
+            class="cairo-basemap-canvas"
+            role="region"
+            aria-label="Interactive street map of Cairo with the Nile, stay areas and illustrated landmarks"
+            aria-describedby="basemap-caption"
+          >
+            <p class="basemap-fallback">
+              The street map needs an internet connection.
+              <a href="https://www.openstreetmap.org/#map=12/30.025/31.235">
+                View Cairo on OpenStreetMap ↗
+              </a>
+            </p>
+          </div>
+          <figcaption id="basemap-caption">
+            <div class="basemap-key" aria-label="Map legend">
+              <span>
+                <i class="basemap-key-region" aria-hidden="true"></i>
+                Stay areas
+              </span>
+              <span>
+                <i class="basemap-key-river" aria-hidden="true"></i>
+                The Nile
+              </span>
+            </div>
+            The same places, over a real map. Drag to explore; use + and − to
+            zoom in for street names. Select a neighbourhood for places to stay,
+            or a drawing to visit the landmark. Shaded areas are approximate;
+            the palace marker shows the island, not the arrival point.
+            <a
+              class="text-link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Cairo+Egypt"
+            >
+              Open Cairo in Google Maps ↗
+            </a>
+          </figcaption>
+        </figure>
         <div class="stay-grid">
-          <article class="stay-card">
+          <article class="stay-card" id="stay-maadi">
             <h3>Maadi</h3>
             <ul>
               <li>
@@ -70,7 +668,7 @@
               </li>
             </ul>
           </article>
-          <article class="stay-card">
+          <article class="stay-card" id="stay-heliopolis">
             <h3>Heliopolis</h3>
             <ul>
               <li>
@@ -90,7 +688,7 @@
               </li>
             </ul>
           </article>
-          <article class="stay-card">
+          <article class="stay-card" id="stay-zamalek">
             <h3>Zamalek</h3>
             <ul>
               <li>
@@ -110,7 +708,7 @@
               </li>
             </ul>
           </article>
-          <article class="stay-card">
+          <article class="stay-card" id="stay-downtown">
             <h3>Downtown</h3>
             <ul>
               <li>

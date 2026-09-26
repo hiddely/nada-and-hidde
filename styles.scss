@@ -212,6 +212,11 @@ nav {
   margin-inline: auto;
 }
 
+.center-message {
+  text-align: center;
+  margin: 3em auto;
+}
+
 .welcome {
   text-align: center;
   max-width: 650px;
@@ -292,6 +297,658 @@ footer p {
 
 .section-copy {
   max-width: 600px;
+}
+
+.cairo-map {
+  max-width: 860px;
+  margin: 42px auto 48px;
+  padding: clamp(12px, 3vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 48% 48% 3px 3px / 3% 3% 3px 3px;
+  background: #f3edcf;
+
+  figcaption {
+    max-width: 460px;
+    margin: 8px auto 0;
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--muted);
+  }
+}
+
+.cairo-map-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 18px;
+  border-bottom: 1px solid var(--line);
+  font-style: italic;
+  font-size: clamp(17px, 2.5vw, 24px);
+}
+
+.cairo-map-drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--ink);
+  overflow: visible;
+
+  text {
+    fill: currentColor;
+  }
+  a {
+    cursor: pointer;
+  }
+  a:hover,
+  a:focus-visible {
+    color: #884b32;
+    .map-place-name {
+      text-decoration: underline;
+    }
+    .map-region {
+      fill: #dfd7ad;
+    }
+  }
+}
+
+.map-river {
+  fill: #becbb9;
+}
+.map-water-lines {
+  fill: none;
+  stroke: #839981;
+  stroke-width: 1.2;
+  opacity: 0.65;
+}
+.map-streets {
+  fill: none;
+  stroke: #d8d0ad;
+  stroke-width: 2;
+}
+.map-island {
+  fill: #e4e4bb;
+  stroke: #8b9874;
+  stroke-width: 1.3;
+}
+.map-island-gold {
+  fill: #d9cf8f;
+}
+.map-bridge {
+  fill: none;
+  stroke: #8b8c5e;
+  stroke-width: 2;
+}
+.map-compass {
+  font-size: 17px;
+  color: var(--muted);
+}
+.map-ornaments {
+  color: #7b8054;
+}
+.map-river-label {
+  font-size: 24px;
+  font-style: italic;
+}
+.map-background-label {
+  font-size: 13px;
+  letter-spacing: 5px;
+}
+.map-region {
+  fill: #e5dfbc;
+  fill-opacity: 0.75;
+  stroke: #aba779;
+  stroke-dasharray: 3 5;
+}
+.map-dot {
+  fill: currentColor;
+  stroke: #f3edcf;
+  stroke-width: 3;
+}
+.map-leader {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-dasharray: 3 4;
+}
+.map-place-name {
+  font-family: $font-heading;
+  font-size: 25px;
+}
+.map-place-note {
+  font-size: 17px;
+}
+.map-hit-area {
+  fill: transparent;
+}
+.map-palace {
+  color: #884b32;
+}
+.map-palace-icon {
+  fill: #f3edcf;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+}
+.map-palace-kicker {
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+.map-signoff {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.stay-card[id] {
+  scroll-margin-top: 30px;
+  &:target h3 {
+    text-decoration: underline;
+    text-decoration-color: var(--olive);
+    text-underline-offset: 8px;
+  }
+}
+
+.cairo-reference-map {
+  max-width: 860px;
+  margin: 48px auto;
+  border: 1px solid var(--line);
+  background: #f7f5e9;
+
+  figcaption {
+    padding: 10px 24px;
+    border-top: 1px solid var(--line);
+    font-size: 16px;
+    color: var(--muted);
+    a {
+      display: block;
+      margin-top: 6px;
+    }
+  }
+}
+.reference-map-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--line);
+  h3 {
+    margin: 0;
+  }
+  span {
+    font-size: 26px;
+  }
+}
+.reference-map-scroll {
+  overflow-x: auto;
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+}
+.reference-map-drawing {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: min(560px, calc(100svh - 190px));
+  min-height: 450px;
+  font-family: $font-body;
+  color: var(--ink);
+  text {
+    fill: currentColor;
+  }
+  a:hover text,
+  a:focus-visible text {
+    text-decoration: underline;
+  }
+}
+.reference-districts {
+  fill: #e3e6d2;
+  stroke: #99a084;
+  stroke-dasharray: 5 4;
+}
+.reference-river {
+  fill: #b5cdd0;
+}
+.reference-land {
+  fill: #e3e6d2;
+  stroke: #869b86;
+}
+.reference-dahab {
+  fill: #e8d29e;
+}
+.reference-road-casing,
+.reference-roads {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.reference-road-casing {
+  stroke: #f7f5e9;
+  stroke-width: 10;
+}
+.reference-roads {
+  stroke: #b59465;
+  stroke-width: 4;
+}
+.reference-bridge {
+  stroke: #b59465;
+  stroke-width: 5;
+}
+.reference-road-labels {
+  font-size: 16px;
+  path {
+    fill: none;
+    stroke: #77785e;
+  }
+  text {
+    paint-order: stroke;
+    stroke: #f7f5e9;
+    stroke-width: 5;
+    stroke-linejoin: round;
+  }
+}
+.reference-context {
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #626c60;
+}
+.reference-landmarks {
+  font-size: 17px;
+  circle,
+  path:not(.reference-connector) {
+    fill: #f7f5e9;
+    stroke: #5b6957;
+    stroke-width: 2;
+  }
+}
+.reference-sight {
+  color: #888875;
+  font-size: 15px;
+  .reference-sight-hit {
+    fill: transparent;
+  }
+}
+a.reference-sight {
+  cursor: pointer;
+  &:hover,
+  &:focus-visible {
+    color: #884b32;
+    .reference-sight-art {
+      fill: #ece1c5;
+    }
+  }
+}
+.reference-sight-art {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.reference-connector {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.reference-place,
+.reference-venue {
+  font-size: 23px;
+  font-weight: 700;
+  circle {
+    fill: currentColor;
+    stroke: #f7f5e9;
+    stroke-width: 2;
+  }
+  rect {
+    fill: transparent;
+  }
+}
+.reference-venue {
+  color: #884b32;
+  use {
+    fill: currentColor;
+  }
+}
+.reference-detail {
+  font-size: 17px;
+  font-weight: 400;
+}
+.reference-north {
+  fill: currentColor;
+  font-size: 19px;
+}
+.reference-legend {
+  font-size: 15px;
+}
+.reference-scroll-hint {
+  display: none;
+}
+@media (max-width: $mobile) {
+  .reference-scroll-hint {
+    display: inline;
+  }
+}
+@media print {
+  .reference-map-drawing {
+    min-width: 0;
+  }
+}
+
+// Third map: real streets, drawn in the same palette as the illustrations.
+$basemap-paper: #f3edcf;
+$basemap-river: #b5cdd0;
+$basemap-terracotta: #884b32;
+
+@mixin basemap-halo {
+  text-shadow:
+    0 0 2px $basemap-paper,
+    0 0 4px $basemap-paper,
+    0 0 6px $basemap-paper;
+}
+
+.cairo-basemap-canvas {
+  height: clamp(420px, 70svh, 600px);
+  position: relative;
+  isolation: isolate;
+  background: $basemap-paper
+    radial-gradient(rgba(139, 140, 94, 0.18) 0.6px, transparent 0.8px) 0 0 / 9px
+    9px;
+  font-family: $font-body;
+
+  // Recolours the gray canvas tiles: land to sand, roads to paper.
+  .leaflet-tile-pane {
+    filter: url(#basemap-paper);
+  }
+  .leaflet-control-attribution {
+    font-size: 11px;
+    background: rgba(243, 237, 207, 0.85);
+  }
+  .leaflet-bar {
+    border: 1px solid var(--line);
+    box-shadow: none;
+    a {
+      background: $basemap-paper;
+      color: var(--ink);
+      font-family: $font-body;
+      &:hover {
+        background: var(--cream);
+      }
+    }
+  }
+  .leaflet-control-scale-line {
+    background: rgba(243, 237, 207, 0.85);
+    border-color: var(--muted);
+    color: var(--muted);
+    font-family: $font-body;
+  }
+  // Keep the palette on paper even when tiles are still arriving.
+  &.leaflet-container {
+    background-color: $basemap-paper;
+  }
+}
+.basemap-fallback {
+  position: absolute;
+  z-index: 800;
+  left: 50px;
+  right: 50px;
+  bottom: 28px;
+  padding: 10px 14px;
+  background: var(--paper);
+  font-size: 15px;
+}
+.basemap-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.basemap-north {
+  color: var(--muted);
+  svg {
+    display: block;
+    width: 26px;
+    height: 54px;
+    overflow: visible;
+  }
+}
+
+.basemap-nile {
+  fill: $basemap-river;
+  fill-opacity: 1;
+  stroke: #86a6a8;
+  stroke-width: 1.2;
+}
+.basemap-nile-label {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-86deg);
+  color: #4f7a7e;
+  font: italic 21px/1 $font-body;
+  white-space: nowrap;
+  @include basemap-halo;
+  span {
+    margin-left: 4px;
+    font-style: normal;
+  }
+}
+
+.basemap-pin {
+  overflow: visible;
+  background: none;
+  border: 0;
+}
+.basemap-region {
+  fill: #dcdcbc;
+  fill-opacity: 0.6;
+  stroke: #8f9670;
+  stroke-width: 1.4;
+  stroke-dasharray: 4 5;
+  cursor: pointer;
+  transition:
+    fill 0.15s,
+    stroke 0.15s;
+  &.is-active {
+    fill: #e6d6a4;
+    fill-opacity: 0.8;
+    stroke: $basemap-terracotta;
+  }
+}
+
+// Stay labels hang off a zero-size point; the dot's centre is the coordinate.
+.basemap-place,
+.basemap-palace {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ink) !important;
+  text-decoration: none;
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    color: $basemap-terracotta !important;
+    outline: none;
+    .basemap-place-name {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
+  }
+}
+.basemap-dot {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px $basemap-paper;
+}
+.basemap-place-text {
+  position: absolute;
+  top: -15px; // Centres the 30px name line on the dot.
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  @include basemap-halo;
+}
+.basemap-place-name {
+  font: 22px/30px $font-heading;
+}
+.basemap-place-note {
+  font-size: 15px;
+  line-height: 18px;
+}
+.basemap-place-right .basemap-place-text {
+  left: 16px;
+}
+.basemap-place-left .basemap-place-text {
+  right: 16px;
+  align-items: flex-end;
+  text-align: right;
+}
+.basemap-place-top .basemap-place-text {
+  top: auto;
+  bottom: 12px;
+  left: 0;
+  transform: translateX(-50%);
+  align-items: center;
+  text-align: center;
+}
+
+.basemap-palace {
+  color: $basemap-terracotta !important;
+  .basemap-place-text {
+    top: -33px; // Centres the name line on the castle.
+    left: 30px;
+  }
+}
+.basemap-palace-icon {
+  position: absolute;
+  left: -21px;
+  top: -18px;
+  width: 42px;
+  height: 32px;
+  overflow: visible;
+}
+.basemap-palace-kicker {
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+// Sights sit behind the stay labels: quiet ink drawings you can still open.
+.basemap-sight {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #8a8a6c !important;
+  text-decoration: none;
+  svg {
+    position: absolute;
+    left: calc(var(--art-width) / -2);
+    top: calc(var(--art-height) / -2);
+    width: var(--art-width);
+    height: var(--art-height);
+    overflow: visible;
+  }
+  &:hover,
+  &:focus-visible {
+    color: $basemap-terracotta !important;
+    outline: none;
+    .reference-sight-art {
+      fill: #ece1c5;
+    }
+    .basemap-sight-name {
+      text-decoration: underline;
+    }
+  }
+}
+.basemap-sight-below .basemap-sight-name {
+  top: calc(var(--art-height) / 2 + 3px);
+  transform: translateX(-50%);
+}
+.basemap-sight-left .basemap-sight-name {
+  right: calc(var(--art-width) / 2 + 6px);
+  transform: translateY(-50%);
+}
+.basemap-sight-name {
+  position: absolute;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.2;
+  white-space: nowrap;
+  @include basemap-halo;
+}
+
+// Zoomed out, drop the hotel notes so neighbourhood names stay legible.
+.cairo-basemap-canvas[data-zoom="far"] .basemap-place-note {
+  display: none;
+}
+
+// Phones: smaller names, uncaptioned drawings, and a compact palace label.
+.cairo-basemap-canvas[data-size="narrow"] {
+  .basemap-place-name {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .basemap-place-text {
+    top: -12px;
+  }
+  .basemap-place-right .basemap-place-text {
+    left: 12px;
+  }
+  .basemap-place-left .basemap-place-text {
+    right: 12px;
+  }
+  .basemap-place-top .basemap-place-text {
+    top: auto;
+  }
+  .basemap-place-note,
+  .basemap-sight-name,
+  .basemap-palace-kicker {
+    display: none;
+  }
+  .basemap-sight svg,
+  .basemap-palace-icon {
+    transform: scale(0.75);
+  }
+  .basemap-palace .basemap-place-text {
+    top: -12px;
+    left: 20px;
+  }
+  .basemap-palace .basemap-place-name {
+    font-size: 16px;
+  }
+  .basemap-nile-label {
+    font-size: 17px;
+  }
+}
+
+.basemap-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 6px;
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  i {
+    display: inline-block;
+    width: 22px;
+    height: 13px;
+  }
+  .basemap-key-region {
+    background: rgba(220, 220, 188, 0.8);
+    border: 1px dashed #8f9670;
+    border-radius: 40%;
+  }
+  .basemap-key-river {
+    border-radius: 4px;
+    background: $basemap-river;
+    border: 1px solid #86a6a8;
+  }
 }
 
 .stay-grid {
