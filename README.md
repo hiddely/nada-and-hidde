@@ -1,6 +1,6 @@
 # Nada & Hidde — our wedding
 
-A four-page wedding website built with plain HTML and CSS. Readable source files, with a Node build for the published site. No browser JavaScript, tracking, password, or RSVP form.
+A four-page wedding website built with plain HTML and CSS. Readable source files, with a Node build for the published site. No production browser JavaScript, tracking, password, or RSVP form.
 
 ## Getting started
 
@@ -11,11 +11,11 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. Edit the HTML files or `styles.scss` and refresh your browser to see changes. The development server watches SCSS and recompiles it when you save.
+Open http://localhost:3000. Edit the HTML files, `styles.scss`, or assets and save. The browser refreshes automatically; SCSS changes compile before refreshing. BrowserSync adds its refresh script only during local development.
 
 ## Commands
 
-- `npm run dev` — compile SCSS, watch for style edits, and serve the site locally.
+- `npm run dev` — compile SCSS and serve the site locally with automatic browser refresh.
 - `npm run styles` — compile SCSS once for local use.
 - `npm run format` — add consistent indentation and line breaks with Prettier.
 - `npm run format:check` — check formatting without changing files.

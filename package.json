@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"sass --watch styles.scss:styles.css --no-source-map\" \"serve . --listen 3000\"",
+    "dev": "concurrently --kill-others \"sass --watch styles.scss:styles.css --no-source-map\" \"browser-sync start --config browser-sync.config.cjs\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "node scripts/build.mjs",
@@ -16,6 +16,7 @@
     "predev": "npm run styles"
   },
   "devDependencies": {
+    "browser-sync": "^3.0.4",
     "concurrently": "^10.0.5",
     "html-minifier-terser": "^7.2.0",
     "prettier": "^3.9.9",

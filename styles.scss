@@ -1,10 +1,44 @@
 // Main stylesheet. npm run dev recompiles it when you save.
 // CSS custom properties below are also available in browser dev tools.
 
-$font-body: Arial, Helvetica, sans-serif;
+$font-body: "Alegreya", Georgia, serif;
 $font-heading: Georgia, "Times New Roman", serif;
 $mobile: 760px;
 $wide: 1500px;
+
+// Self-hosted Alegreya keeps the reading text warm and clear.
+@font-face {
+  font-family: "Alegreya";
+  src: url("assets/fonts/Alegreya-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("assets/fonts/Alegreya-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("assets/fonts/Alegreya-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+// Same name lettering as https://nadahid.de/.
+@font-face {
+  font-family: "Eyesome Script";
+  src: url("assets/fonts/Eyesome-Script.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 // Theme — edit the colours here
 
@@ -32,8 +66,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: $font-body;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 19px;
+  line-height: 1.65;
 }
 
 a {
@@ -98,23 +132,8 @@ p {
   padding: 24px 48px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  justify-content: center;
   gap: 30px;
-}
-
-.monogram {
-  font:
-    29px Georgia,
-    serif;
-  letter-spacing: -3px;
-  text-decoration: none;
-
-  span {
-    font-size: 20px;
-    font-style: italic;
-    padding: 0 4px;
-  }
 }
 
 nav {
@@ -123,62 +142,44 @@ nav {
   align-items: center;
 
   a {
-    font-size: 13px;
+    font-size: 1.2em;
     text-decoration: none;
-    padding: 7px 0;
+    padding: 10px 0;
   }
 
   a[aria-current="page"] {
-    border-bottom: 1px solid var(--ink);
+    color: var(--muted);
   }
-}
-
-// Shared labels
-
-.header-note,
-.eyebrow,
-.wedding-details,
-footer > span,
-.number {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 2px;
-}
-
-.eyebrow {
-  margin-bottom: 25px;
 }
 
 // Home — invitation and venue
 
 .hero {
   text-align: center;
-  padding: 64px 24px 66px;
+  padding: 76px 24px 70px;
 
   h1 {
-    font-size: clamp(64px, 9vw, 124px);
-    margin: 0 0 14px;
-    letter-spacing: -0.055em;
-  }
-
-  h1 em {
-    font-size: 0.73em;
-    margin: 0 0.05em;
+    font-family: "Eyesome Script", cursive;
+    font-size: clamp(40px, 2.5rem + (1vw - 3.2px) * 3.571, 80px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin: 0 0 26px;
   }
 }
 
 .hero-subtitle {
   font-family: Georgia, serif;
-  font-size: 20px;
+  font-size: 25px;
   font-style: italic;
   color: var(--muted);
 }
 
 .venue-illustration {
   display: block;
-  width: min(590px, 100%);
+  width: min(690px, 100%);
   height: auto;
-  margin: 30px auto 19px;
+  margin: 40px auto 30px;
   mix-blend-mode: multiply;
 }
 
@@ -187,7 +188,9 @@ footer > span,
   justify-content: center;
   align-items: center;
   gap: 22px;
-  letter-spacing: 1.7px;
+  font-family: $font-heading;
+  font-size: 17px;
+  font-style: italic;
 }
 
 .star {
@@ -202,22 +205,7 @@ footer > span,
   margin: 10px 0 24px;
 }
 
-// Shared buttons and sections
-
-.button {
-  display: inline-flex;
-  gap: 40px;
-  align-items: center;
-  border: 1px solid var(--ink);
-  padding: 11px 22px;
-  font-size: 12px;
-  text-decoration: none;
-
-  &:hover {
-    background: var(--ink);
-    color: var(--cream);
-  }
-}
+// Shared sections
 
 .section-width {
   width: min(1080px, calc(100% - 96px));
@@ -228,9 +216,8 @@ footer > span,
   text-align: center;
   max-width: 650px;
   padding: 78px 0 84px;
-  border-top: 1px solid var(--line);
 
-  p:not(.eyebrow) {
+  p {
     max-width: 565px;
     margin-inline: auto;
   }
@@ -241,72 +228,25 @@ footer > span,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  padding: 65px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  padding: 65px 0 95px;
 }
 
 .island > div + div {
-  padding-top: 32px;
+  padding-top: 0;
 }
 
 .text-link {
-  font-size: 14px;
+  font-size: 17px;
 
   span {
     margin-left: 8px;
   }
 }
 
-// Home — planning links
-
-.planning {
-  padding-block: 82px 95px;
-}
-
-.guide-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.guide {
-  position: relative;
-  text-decoration: none;
-  border-top: 1px solid var(--olive);
-  padding: 24px 20px 20px 0;
-
-  .number {
-    display: block;
-    margin-bottom: 28px;
-  }
-
-  h3 {
-    margin-bottom: 15px;
-  }
-
-  p {
-    font-size: 14px;
-    max-width: 240px;
-  }
-}
-
-.guide-arrow {
-  display: block;
-  font-size: 24px;
-  margin-top: 20px;
-}
-
-.guide:hover .guide-arrow {
-  transform: translate(4px, -4px);
-}
-
 // Footer
 
 footer {
-  border-top: 1px solid var(--line);
-  padding: 40px 24px 36px;
+  padding: 50px 24px 45px;
   text-align: center;
 }
 
@@ -322,10 +262,6 @@ footer p {
     italic 15px Georgia,
     serif;
   margin: 12px 0 25px;
-}
-
-footer > span {
-  font-size: 9px;
 }
 
 // Inner page introductions
@@ -347,7 +283,6 @@ footer > span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  border-top: 1px solid var(--line);
   padding-block: 55px;
 }
 
@@ -367,13 +302,7 @@ footer > span {
 }
 
 .stay-card {
-  border: 1px solid var(--line);
-  padding: 30px 34px;
-  background: rgba(255, 255, 255, 0.12);
-
-  .eyebrow {
-    margin-bottom: 18px;
-  }
+  padding: 30px 0;
 
   h3 {
     font-size: 35px;
@@ -392,9 +321,9 @@ footer > span {
 }
 
 .note {
-  background: var(--olive);
-  color: #202717;
-  padding: 30px 34px;
+  background: transparent;
+  color: var(--ink);
+  padding: 30px 0;
   margin-top: 24px;
 
   h3 {
@@ -547,14 +476,11 @@ details p {
     gap: 20px;
     flex-direction: column;
   }
-  .header-note {
-    display: none;
-  }
   nav {
     gap: 25px;
   }
   nav a {
-    font-size: 12px;
+    font-size: 15px;
   }
   .hero {
     padding-top: 45px;
@@ -565,13 +491,9 @@ details p {
   .section-width {
     width: calc(100% - 44px);
   }
-  .hero .eyebrow {
-    font-size: 9px;
-  }
   .wedding-details {
     gap: 13px;
-    font-size: 9px;
-    letter-spacing: 1px;
+    font-size: 14px;
   }
   .venue-illustration {
     margin-block: 28px 24px;
@@ -592,28 +514,6 @@ details p {
   .island {
     padding-block: 45px;
   }
-  .guide-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .guide {
-    padding-bottom: 20px;
-  }
-  .guide .number {
-    margin-bottom: 20px;
-  }
-  .guide p {
-    max-width: none;
-    padding-right: 40px;
-  }
-  .guide-arrow {
-    position: absolute;
-    right: 8px;
-    bottom: 30px;
-  }
-  .planning {
-    padding-block: 55px;
-  }
   .page-intro {
     padding-block: 55px;
   }
@@ -621,14 +521,14 @@ details p {
     grid-template-columns: 1fr;
   }
   .stay-card {
-    padding: 25px;
+    padding: 25px 0;
   }
   .discovery-columns {
     gap: 55px;
     padding-block: 50px;
   }
   .note {
-    padding: 25px;
+    padding: 25px 0;
   }
   .travel-basics {
     padding-block: 40px;
@@ -650,7 +550,6 @@ details p {
 }
 @media print {
   .site-header,
-  .button,
   footer,
   .skip-link {
     display: none;
