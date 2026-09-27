@@ -156,7 +156,7 @@ nav {
 
 .hero {
   text-align: center;
-  padding: 76px 24px 70px;
+  padding: 76px 24px 0; // The venue block below sets the spacing.
 
   h1 {
     font-family: "Eyesome Script", cursive;
@@ -183,17 +183,23 @@ nav {
   mix-blend-mode: multiply;
 }
 
+// Date and place sit at either edge of the drawing above.
 .wedding-details {
-  margin: 0 0 36px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 24px;
+  width: min(620px, 100%); // Same width as .venue-illustration.
+  margin: 0 auto 36px;
   font-family: $font-heading;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
 .invitation {
   max-width: 740px; // Wide enough for two lines on larger screens.
-  margin: 0 auto 24px;
-  font-family: Georgia, serif;
+  margin: 0 auto;
+  font-family: $font-body;
   font-size: 1.1875rem;
   line-height: 1.6;
 }
@@ -231,6 +237,11 @@ nav {
 
 .island > div + div {
   padding-top: 0;
+}
+
+// Equal space above and below, between the invitation and "coming soon".
+.island {
+  padding-block: 95px;
 }
 
 // No trailing margin, so the travel link centres on the text exactly.
@@ -759,6 +770,7 @@ $basemap-terracotta: #884b32;
 .basemap-key {
   display: flex;
   flex-wrap: wrap;
+  align-items: center; // The legend item and the Maps link share one centre line.
   gap: 8px 24px;
   margin-bottom: 6px;
   span {
