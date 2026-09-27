@@ -427,7 +427,7 @@ $basemap-terracotta: #884b32;
 }
 .basemap-nile-label {
   position: absolute;
-  transform: translate(-50%, -50%) rotate(-86deg);
+  transform: translate(-50%, -50%) rotate(-54deg); // Follows the river north of Zamalek.
   color: #4f7a7e;
   font: italic 21px/1 $font-body;
   white-space: nowrap;
@@ -501,10 +501,6 @@ $basemap-terracotta: #884b32;
 .basemap-place-name {
   font: 22px/30px $font-heading;
 }
-.basemap-place-note {
-  font-size: 15px;
-  line-height: 18px;
-}
 .basemap-place-right .basemap-place-text {
   left: 16px;
 }
@@ -554,6 +550,79 @@ $basemap-terracotta: #884b32;
   fill: #e4d09c;
   transition: fill 0.15s;
 }
+.art-accent {
+  fill: $basemap-terracotta;
+}
+
+// Fireworks over the palace: the wedding, marked with a little celebration.
+.basemap-fireworks {
+  position: absolute;
+  left: -46px; // Bursts centred just above the castle.
+  top: -86px;
+  width: 72px;
+  height: 72px;
+  overflow: visible;
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  path {
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: basemap-twinkle 2.8s ease-in-out infinite;
+  }
+}
+.fireworks-gold {
+  stroke: #b8862b;
+}
+.fireworks-rose {
+  stroke: #b8664a;
+  animation-delay: -0.9s !important;
+}
+.fireworks-late {
+  animation-delay: -1.8s !important;
+}
+@keyframes basemap-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.85);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .basemap-fireworks path {
+    animation: none;
+  }
+}
+
+// Nada's home: drawn in, but deliberately not a link.
+.basemap-home {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #6f6a4c;
+  pointer-events: none;
+}
+.basemap-home-icon {
+  position: absolute;
+  left: -13px;
+  top: -13px;
+}
+.basemap-home-name {
+  position: absolute;
+  left: 17px;
+  top: -16px;
+  color: $basemap-terracotta;
+  font:
+    26px/30px "Eyesome Script",
+    cursive;
+  white-space: nowrap;
+  @include basemap-halo;
+}
 
 // Sights sit behind the stay labels: quiet ink drawings you can still open.
 .basemap-sight {
@@ -594,6 +663,19 @@ $basemap-terracotta: #884b32;
   left: calc(var(--art-width) / 2 + 6px);
   transform: translateY(-50%);
 }
+// Tall landmarks stand on their point instead of being centred on it.
+.basemap-sight-base {
+  svg {
+    top: calc(var(--art-height) * -1);
+  }
+  &.basemap-sight-below .basemap-sight-name {
+    top: 3px;
+  }
+  &.basemap-sight-left .basemap-sight-name,
+  &.basemap-sight-right .basemap-sight-name {
+    top: calc(var(--art-height) / -2);
+  }
+}
 .basemap-sight-name {
   position: absolute;
   font-size: 13px;
@@ -603,9 +685,8 @@ $basemap-terracotta: #884b32;
   @include basemap-halo;
 }
 
-// Zoomed out, drop hotel notes and the smaller sights to keep names legible.
+// Zoomed out, drop the smaller sights to keep names legible.
 .cairo-basemap-canvas[data-zoom="far"] {
-  .basemap-place-note,
   .basemap-sight-minor {
     display: none;
   }
@@ -629,12 +710,14 @@ $basemap-terracotta: #884b32;
   .basemap-place-top .basemap-place-text {
     top: auto;
   }
-  .basemap-place-note,
-  .basemap-sight-name {
+  .basemap-sight-name,
+  .basemap-home-name {
     display: none;
   }
   .basemap-sight svg,
-  .basemap-palace-icon {
+  .basemap-palace-icon,
+  .basemap-fireworks,
+  .basemap-home-icon {
     transform: scale(0.75);
   }
   .basemap-palace .basemap-place-text {
@@ -688,7 +771,14 @@ $basemap-terracotta: #884b32;
 
   h3 {
     font-size: 35px;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
+  }
+
+  .stay-intro {
+    max-width: 420px;
+    margin: 0 0 20px;
+    font-style: italic;
+    color: var(--muted);
   }
 
   ul {
