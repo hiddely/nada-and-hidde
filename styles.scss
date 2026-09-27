@@ -199,8 +199,8 @@ nav {
 }
 
 .invitation {
-  max-width: 520px;
-  margin: 26px auto 0;
+  max-width: 740px; // Wide enough for two lines on larger screens.
+  margin: 0 auto 26px;
   font-family: Georgia, serif;
   font-size: 19px;
   line-height: 1.6;
@@ -208,7 +208,7 @@ nav {
 
 .date-note {
   font-family: Georgia, serif;
-  font-size: 15px;
+  font-size: 17px;
   font-style: italic;
   margin: 10px 0 24px;
 }
@@ -251,8 +251,10 @@ nav {
 .text-link {
   font-size: 17px;
 
-  span {
-    margin-left: 8px;
+  // The gap before the arrow is an en space, not a margin, so the underline
+  // runs unbroken from the label through the arrow.
+  span::before {
+    content: "\2002";
   }
 }
 
@@ -441,11 +443,15 @@ $basemap-terracotta: #884b32;
 }
 .basemap-nile-label {
   position: absolute;
-  transform: translate(-50%, -50%) rotate(-54deg); // Follows the river north of Zamalek.
-  color: #4f7a7e;
+  transform: translate(-50%, -50%) rotate(36deg); // Follows the channel.
+  color: #2f5a5f;
   font: italic 21px/1 $font-body;
   white-space: nowrap;
-  @include basemap-halo;
+  // Haloed in the river's own colour so the label reads as part of the water.
+  text-shadow:
+    0 0 2px $basemap-river,
+    0 0 4px $basemap-river,
+    0 0 6px $basemap-river;
   span {
     margin-left: 4px;
     font-style: normal;
@@ -535,14 +541,17 @@ $basemap-terracotta: #884b32;
 .basemap-palace {
   color: $basemap-terracotta !important;
   .basemap-place-text {
-    top: -17px; // Centres the name line on the castle.
-    left: 30px;
+    top: -15px; // Centres the name line on the castle.
+    left: 23px;
+  }
+  .basemap-place-name {
+    font-size: 19px;
   }
 }
 .basemap-palace-icon {
   position: absolute;
-  left: -21px;
-  top: -18px;
+  left: -16px;
+  top: -14px;
   .art-wash {
     fill: #efc4a4;
   }
@@ -571,10 +580,10 @@ $basemap-terracotta: #884b32;
 // Fireworks over the palace: the wedding, marked with a little celebration.
 .basemap-fireworks {
   position: absolute;
-  left: -46px; // Bursts centred just above the castle.
-  top: -86px;
-  width: 72px;
-  height: 72px;
+  left: -35px; // Bursts centred just above the castle.
+  top: -66px;
+  width: 54px;
+  height: 54px;
   overflow: visible;
   fill: none;
   stroke-width: 2.4;
@@ -741,7 +750,7 @@ $basemap-terracotta: #884b32;
     font-size: 16px;
   }
   .basemap-nile-label {
-    font-size: 17px;
+    font-size: 14px;
   }
 }
 

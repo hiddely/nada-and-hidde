@@ -347,7 +347,8 @@
     const nileLabel = element("span", "basemap-nile-label");
     nileLabel.append("the Nile ", element("span", "", "نهر النيل"));
     nileLabel.lastChild.lang = "ar";
-    L.marker([30.094, 31.2076], {
+    // Centred on the single wide channel between Dahab Island and Maadi.
+    L.marker([29.954, 31.2517], {
       pane: "nile",
       interactive: false,
       keyboard: false,
@@ -423,7 +424,7 @@
     venueText.append(element("span", "basemap-place-name", palace.name));
     venue.append(
       fireworks(),
-      drawing(art.castle, 42, "basemap-palace-icon"),
+      drawing(art.castle, 32, "basemap-palace-icon"),
       venueText,
     );
     pin(palace.point, venue, "places").addTo(map);
@@ -466,7 +467,7 @@
       map.fitBounds(
         narrow
           ? [
-              [29.95, 31.115],
+              [29.935, 31.115],
               [30.108, 31.345],
             ]
           : [
