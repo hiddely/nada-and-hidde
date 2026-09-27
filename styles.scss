@@ -66,7 +66,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: $font-body;
-  font-size: 19px;
+  font-size: 1.1875rem;
   line-height: 1.65;
 }
 
@@ -102,17 +102,17 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(48px, 6.5vw, 86px);
+  font-size: clamp(3rem, 6.5vw, 5.375rem);
   margin-bottom: 25px;
 }
 
 h2 {
-  font-size: clamp(34px, 4vw, 49px);
+  font-size: clamp(2.125rem, 4vw, 3.0625rem);
   margin-bottom: 25px;
 }
 
 h3 {
-  font-size: 29px;
+  font-size: 1.8125rem;
 }
 
 em {
@@ -160,7 +160,7 @@ nav {
 
   h1 {
     font-family: "Eyesome Script", cursive;
-    font-size: clamp(40px, 2.5rem + (1vw - 3.2px) * 3.571, 80px);
+    font-size: clamp(2.5rem, 2.5rem + (1vw - 0.2rem) * 3.571, 5rem);
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.1;
@@ -170,7 +170,7 @@ nav {
 
 .hero-subtitle {
   font-family: Georgia, serif;
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-style: italic;
   color: var(--muted);
 }
@@ -189,12 +189,12 @@ nav {
   align-items: center;
   gap: 22px;
   font-family: $font-heading;
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-style: italic;
 }
 
 .star {
-  font-size: 22px;
+  font-size: 1.375rem;
   color: var(--olive);
 }
 
@@ -202,13 +202,13 @@ nav {
   max-width: 740px; // Wide enough for two lines on larger screens.
   margin: 0 auto 26px;
   font-family: Georgia, serif;
-  font-size: 19px;
+  font-size: 1.1875rem;
   line-height: 1.6;
 }
 
 .date-note {
   font-family: Georgia, serif;
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-style: italic;
   margin: 10px 0 24px;
 }
@@ -249,7 +249,7 @@ nav {
 }
 
 .text-link {
-  font-size: 17px;
+  font-size: 1.0625rem;
 
   // The gap before the arrow is an en space, not a margin, so the underline
   // runs unbroken from the label through the arrow.
@@ -263,7 +263,7 @@ nav {
   padding: 0 24px;
   text-align: center;
   font-family: "Eyesome Script", cursive;
-  font-size: clamp(30px, 5vw, 44px);
+  font-size: clamp(1.875rem, 5vw, 2.75rem);
   color: var(--muted);
 }
 
@@ -276,14 +276,14 @@ footer {
 
 .footer-names {
   font:
-    30px Georgia,
+    1.875rem Georgia,
     serif;
   text-decoration: none;
 }
 
 footer p {
   font:
-    italic 15px Georgia,
+    italic 0.9375rem Georgia,
     serif;
   margin: 12px 0 25px;
 }
@@ -339,7 +339,7 @@ $basemap-terracotta: #884b32;
 
   figcaption {
     padding: 14px 0 0;
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--muted);
     a {
       display: block;
@@ -356,7 +356,7 @@ $basemap-terracotta: #884b32;
     margin: 0;
   }
   span {
-    font-size: 26px;
+    font-size: 1.625rem;
   }
 }
 
@@ -382,7 +382,7 @@ $basemap-terracotta: #884b32;
     filter: url(#basemap-paper);
   }
   .leaflet-control-attribution {
-    font-size: 11px;
+    font-size: 0.6875rem;
     background: rgba(243, 237, 207, 0.85);
   }
   .leaflet-bar {
@@ -416,7 +416,7 @@ $basemap-terracotta: #884b32;
   bottom: 28px;
   padding: 10px 14px;
   background: var(--paper);
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 .basemap-filters {
   position: absolute;
@@ -431,7 +431,7 @@ $basemap-terracotta: #884b32;
     height: 54px;
     overflow: visible;
     fill: currentColor;
-    font: 19px $font-body;
+    font: 1.1875rem $font-body;
   }
 }
 
@@ -445,7 +445,7 @@ $basemap-terracotta: #884b32;
   position: absolute;
   transform: translate(-50%, -50%) rotate(36deg); // Follows the channel.
   color: #2f5a5f;
-  font: italic 21px/1 $font-body;
+  font: italic 1.3125rem/1 $font-body;
   white-space: nowrap;
   // Haloed in the river's own colour so the label reads as part of the water.
   text-shadow:
@@ -519,7 +519,7 @@ $basemap-terracotta: #884b32;
   @include basemap-halo;
 }
 .basemap-place-name {
-  font: 22px/30px $font-heading;
+  font: 1.375rem/30px $font-heading;
 }
 .basemap-place-right .basemap-place-text {
   left: 16px;
@@ -545,7 +545,7 @@ $basemap-terracotta: #884b32;
     left: 23px;
   }
   .basemap-place-name {
-    font-size: 19px;
+    font-size: 1.1875rem;
   }
 }
 .basemap-palace-icon {
@@ -639,7 +639,7 @@ $basemap-terracotta: #884b32;
   position: absolute;
   left: 17px;
   top: -8px; // Centres the line on the house.
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-style: italic;
   line-height: 1.2;
   white-space: nowrap;
@@ -700,7 +700,7 @@ $basemap-terracotta: #884b32;
 }
 .basemap-sight-name {
   position: absolute;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-style: italic;
   line-height: 1.2;
   white-space: nowrap;
@@ -717,7 +717,7 @@ $basemap-terracotta: #884b32;
 // Phones: smaller names, uncaptioned drawings, and a compact palace label.
 .cairo-basemap-canvas[data-size="narrow"] {
   .basemap-place-name {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 24px;
   }
   .basemap-place-text {
@@ -747,10 +747,10 @@ $basemap-terracotta: #884b32;
     left: 20px;
   }
   .basemap-palace .basemap-place-name {
-    font-size: 16px;
+    font-size: 1rem;
   }
   .basemap-nile-label {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
 
@@ -792,7 +792,7 @@ $basemap-terracotta: #884b32;
   padding: 30px 0;
 
   h3 {
-    font-size: 35px;
+    font-size: 2.1875rem;
     margin-bottom: 12px;
   }
 
@@ -840,7 +840,7 @@ $basemap-terracotta: #884b32;
   padding: 40px 0;
 
   h2 {
-    font-size: 36px;
+    font-size: 2.25rem;
     margin-bottom: 0;
   }
 
@@ -870,14 +870,14 @@ $basemap-terracotta: #884b32;
   }
 
   li > span:first-child {
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 1px;
     color: var(--muted);
   }
 
   li > span + span {
     font-family: Georgia, serif;
-    font-size: 21px;
+    font-size: 1.3125rem;
     line-height: 1.4;
   }
 }
@@ -904,7 +904,7 @@ summary {
   list-style: none;
   cursor: pointer;
   font:
-    23px/1.4 Georgia,
+    1.4375rem/1.4 Georgia,
     serif;
   padding: 26px 0;
   display: flex;
@@ -920,7 +920,7 @@ summary {
 .faq-icon:before {
   content: "+";
   font:
-    24px Georgia,
+    1.5rem Georgia,
     serif;
 }
 
@@ -974,20 +974,20 @@ details p {
     gap: 25px;
   }
   nav a {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .hero {
     padding-top: 45px;
   }
   .hero-subtitle {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
   .section-width {
     width: calc(100% - 44px);
   }
   .wedding-details {
     gap: 13px;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .venue-illustration {
     margin-block: 28px 24px;
@@ -1031,7 +1031,7 @@ details p {
     margin-top: 10px;
   }
   summary {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   .closing {
     padding-block: 60px;
