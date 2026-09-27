@@ -347,10 +347,6 @@ $basemap-terracotta: #884b32;
     padding: 14px 0 0;
     font-size: 1rem;
     color: var(--muted);
-    a {
-      display: block;
-      margin-top: 6px;
-    }
   }
 }
 .basemap-heading {
@@ -763,15 +759,22 @@ $basemap-terracotta: #884b32;
 .basemap-key {
   display: flex;
   flex-wrap: wrap;
-  align-items: center; // The legend item and the Maps link share one centre line.
+  align-items: baseline; // The legend label and the Maps link share a baseline.
   gap: 8px 24px;
   margin-bottom: 6px;
-  span {
+  // Same size as the legend label, so both read as one line of text.
+  .text-link {
+    font-size: inherit;
+  }
+  // Baseline-align so the label text (not the empty swatch, whose baseline is
+  // its bottom edge) sets the row's baseline; the swatch centres itself.
+  > span {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
   }
   i {
+    align-self: center;
     display: inline-block;
     width: 22px;
     height: 13px;
