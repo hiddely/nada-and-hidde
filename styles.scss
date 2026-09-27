@@ -305,7 +305,8 @@ footer p {
 
 .travel-basics {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  // One wide column, still short enough to read comfortably.
+  grid-template-columns: minmax(0, 760px);
   gap: 80px;
   padding-block: 55px;
   padding-block-end: 0;
