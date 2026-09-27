@@ -198,6 +198,14 @@ nav {
   color: var(--olive);
 }
 
+.invitation {
+  max-width: 520px;
+  margin: 26px auto 0;
+  font-family: Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
 .date-note {
   font-family: Georgia, serif;
   font-size: 15px;
@@ -246,6 +254,15 @@ nav {
   span {
     margin-left: 8px;
   }
+}
+
+.coming-soon {
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  text-align: center;
+  font-family: "Eyesome Script", cursive;
+  font-size: clamp(30px, 5vw, 44px);
+  color: var(--muted);
 }
 
 // Footer
@@ -314,15 +331,12 @@ $basemap-paper: #f3edcf;
 $basemap-river: #b5cdd0;
 $basemap-terracotta: #884b32;
 
+// The map sits straight on the page; only the map itself is framed.
 .cairo-basemap {
-  max-width: 860px;
-  margin: 48px auto;
-  border: 1px solid var(--line);
-  background: #f7f5e9;
+  margin: 40px 0 48px; // Full section width, aligned with the text around it.
 
   figcaption {
-    padding: 10px 24px;
-    border-top: 1px solid var(--line);
+    padding: 14px 0 0;
     font-size: 16px;
     color: var(--muted);
     a {
@@ -335,8 +349,7 @@ $basemap-terracotta: #884b32;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--line);
+  padding: 0 0 14px;
   h3 {
     margin: 0;
   }
@@ -353,6 +366,7 @@ $basemap-terracotta: #884b32;
 }
 
 .cairo-basemap-canvas {
+  border: 1px solid var(--line);
   height: clamp(420px, 70svh, 600px);
   position: relative;
   isolation: isolate;
@@ -615,11 +629,10 @@ $basemap-terracotta: #884b32;
 .basemap-home-name {
   position: absolute;
   left: 17px;
-  top: -16px;
-  color: $basemap-terracotta;
-  font:
-    26px/30px "Eyesome Script",
-    cursive;
+  top: -8px; // Centres the line on the house.
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.2;
   white-space: nowrap;
   @include basemap-halo;
 }
