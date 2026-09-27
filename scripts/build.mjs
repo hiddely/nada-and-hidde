@@ -12,6 +12,7 @@ import path from "node:path";
 import { minify } from "html-minifier-terser";
 import { compile } from "sass";
 import sharp from "sharp";
+import { includePartials } from "./partials.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, "dist");
@@ -36,7 +37,10 @@ const pages = (await readdir(root)).filter((name) => name.endsWith(".html"));
 for (const page of pages) {
   const source = await readFile(path.join(root, page), "utf8");
   const html = await minify(
-    source.replaceAll(illustration, optimizedIllustration),
+    includePartials(source, page).replaceAll(
+      illustration,
+      optimizedIllustration,
+    ),
     {
       collapseWhitespace: true,
       conservativeCollapse: true,

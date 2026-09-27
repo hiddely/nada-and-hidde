@@ -26,6 +26,7 @@ Stop the dev server before starting preview; both use port 3000.
 
 ## Edit
 
+- `partials/header.html` and `partials/footer.html`: the navigation and footer shared by every page. Pages include them with `<!-- include: header -->` and `<!-- include: footer -->`; the dev server and build fill these in and mark the current page in the navigation.
 - `index.html`: introduction, wedding date, and venue.
 - `travel.html`: airports, transport, and accommodation.
 - `discover.html`: sightseeing, restaurants, and itinerary information.
