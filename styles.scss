@@ -270,6 +270,14 @@ nav {
   }
 }
 
+// A link inside running text: same size as the sentence, no arrow. Prettier
+// puts the label on its own line, and inline-block trims the spaces that
+// leaves inside the link, so the underline stops exactly at the word.
+.inline-link {
+  display: inline-block;
+  font-size: inherit;
+}
+
 .coming-soon {
   margin: 0 auto 40px;
   padding: 0 24px;
@@ -291,6 +299,13 @@ footer p {
     italic 0.9375rem Georgia,
     serif;
   margin: 0;
+}
+
+.footer-mark {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.35em;
+  vertical-align: -0.25em; // Centre the poppy on the lowercase letters.
 }
 
 // Inner page introductions
