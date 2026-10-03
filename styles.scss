@@ -278,6 +278,85 @@ nav {
   font-size: inherit;
 }
 
+// Home — photo strip across the full width. assets/gallery.js loops it.
+
+.gallery {
+  margin-bottom: 64px;
+}
+
+.gallery-track {
+  position: relative; // The script measures photo positions from here.
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+
+  // Without the script the scrollbar stays, so the photos can still be seen.
+  .is-looping & {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  img {
+    display: block;
+    flex: none;
+    width: auto;
+    height: 250px;
+    background: var(--line);
+  }
+}
+
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--cream);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
 .coming-soon {
   margin: 0 auto 40px;
   padding: 0 24px;

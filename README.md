@@ -33,6 +33,7 @@ Stop the dev server before starting preview; both use port 3000.
 - `faqs.html`: frequently asked questions, using native HTML disclosure controls.
 - `styles.scss`: shared layout and colours, organized into labelled sections with nested selectors. Colours, fonts, and responsive breakpoints are near the top. `styles.css` is generated and should not be edited.
 - `assets/dahab-island-palace.png`: supplied venue illustration, shown without altering the original.
+- `assets/photos/`: photos for the home page gallery. Add or remove images here; `<!-- include: gallery -->` in `index.html` lists every JPEG, PNG or WebP in the folder, and `assets/gallery.js` loops them slowly with previous, pause and next controls.
 
 The wedding date is intentionally marked “Date to be announced” until confirmed. The three-day itinerary has not been supplied, so guests are invited to contact the couple for it. “Hilton Airport Hotel” is listed as Hilton Cairo Heliopolis, the Hilton near Cairo International Airport; confirm this is the intended hotel.
 
@@ -44,6 +45,7 @@ The Node build in `scripts/build.mjs`:
 
 - Minifies each root HTML page and compiles SCSS into compressed CSS.
 - Converts the venue PNG into a lossless WebP and updates the published HTML to use it.
+- Resizes the gallery photos to 500px high WebP (sharp at 250px on high-density screens); the full-size originals are not published.
 - Copies the remaining assets into `dist/`.
 - Reports the reduction in file size.
 
